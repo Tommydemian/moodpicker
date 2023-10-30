@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: theme.colorPurple,
     fontWeight: 'bold',
+    fontFamily: theme.fontFamilyRegular,
   },
   iconAndDescription: {
     flexDirection: 'row',

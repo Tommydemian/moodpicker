@@ -93,6 +93,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     paddingVertical: theme.space10,
     color: theme.colorWhite,
+    fontFamily: theme.fontFamilyBold,
   },
   itemContainer: {
     flexDirection: 'row',
@@ -117,6 +118,7 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     textAlign: 'center',
     color: theme.colorPurple,
+    fontFamily: theme.fontFamilyBold,
   },
   submitButton: {
     paddingHorizontal: 20,
@@ -131,7 +133,7 @@ const styles = StyleSheet.create({
     color: theme.colorWhite,
     textAlign: 'center',
     fontSize: 15,
-    fontWeight: 'bold',
+    fontFamily: theme.fontFamilyBold,
   },
   image: {
     alignSelf: 'center',

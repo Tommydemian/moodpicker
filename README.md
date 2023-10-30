@@ -83,6 +83,9 @@ To learn more about React Native, take a look at the following resources:
 - Redux Persist
 . Que use Redux Persist from behind.
 
+> **MMVK** seems to be the actual go to related to persistence.
+
+
 # Adding Local Images
 There's certain rules: 
 1. Reduce your image as much as possible
@@ -91,7 +94,22 @@ There's certain rules:
 
 **Note**: You have to have 3 different img sizes (cause pixel density) for different devices
 
-work with images: $$$yarn add react-native-fast-image
+work with images: <yarn add react-native-fast-image>
+
+## Why to use React Native Fast Image:
+1. react-native-fast-image proporciona un manejo de caché mejorado en comparación con el componente <Image> predeterminado de React Native.
+Priorización de Carga:
+
+2. Permite establecer prioridades de carga para las imágenes, lo cual puede ser útil para asegurarse de que las imágenes críticas se carguen primero.
+Soporte para Formatos y Características Adicionales:
+
+3. Ofrece soporte para más formatos de imagen y características como el desvanecimiento de imágenes.
+Consistencia:
+
+4. Usar un único componente para manejar todas las imágenes puede llevar a una mayor consistencia y facilidad de mantenimiento en el código.
+Optimización del Rendimiento:
+
+Está optimizado para mejorar el rendimiento de carga y visualización de las imágenes.
 
 # Icons
 steps:
@@ -99,3 +117,47 @@ import { Svg, Path } from 'react-native-svg'
 replace svg and path with Svg and Path
 add a default fill color to the svg
 add a default width and height to the svg
+
+- Life savign toool:
+> [React SVGR Playground](https://react-svgr.com/playground/?native=true&typescript=true)
+
+# Custom Fonts
+1. download family font
+2. src/assets/fonts => paste fonts
+3. react-native.config.js:
+```javascript
+module.exports = {
+   assets: ['./src/assets/fonts'], // font path
+}
+```
+4. Link the assets to IOS & Android
+```bash
+npx react-native-asset
+```
+5. rebuild IOS & Android
+```bash
+yarn ios
+yarn android
+```
+
+**Note**
+Add //font-family into your theme file and use fontFamily as prefix, i.e
+```typescript
+export const theme = {
+  colorPurple: '#454C73',
+  colorWhite: '#fff',
+  colorLavender: '#87677B',
+  colorBlue: '#1D84B5',
+  colorGrey: '#8E9AAF',
+  // fonts
+  fontFamilyBold: 'Kalam-Bold',
+  fontFamilyRegular: 'Kalam-Regular',
+  fontFamilyLight: 'Kalam-Light',
+
+  // spacing
+  space10: 10,
+};
+```
+`Just as we did with color`
+
+**Note** Preferiblemente no uses fontWeight en tu app, usa directamente la fontFamily con el weight specific.
