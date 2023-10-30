@@ -80,3 +80,22 @@ To learn more about React Native, take a look at the following resources:
 
 # Persistance 
 - Async Storage
+- Redux Persist
+. Que use Redux Persist from behind.
+
+# Adding Local Images
+There's certain rules: 
+1. Reduce your image as much as possible
+
+- Size of the image => 1. takes w and h from the img itself
+
+**Note**: You have to have 3 different img sizes (cause pixel density) for different devices
+
+work with images: $$$yarn add react-native-fast-image
+
+# Icons
+steps:
+import { Svg, Path } from 'react-native-svg'
+replace svg and path with Svg and Path
+add a default fill color to the svg
+add a default width and height to the svg

@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { StyleSheet, Text, View, Pressable } from 'react-native';
+import { StyleSheet, Text, View, Pressable, Image } from 'react-native';
 import { moodOptions } from '../constants/moodOptions';
 import { MoodOption } from '../types/index';
 // Theme
@@ -9,10 +9,13 @@ type MoodPickerProps = {
   handleSelectedMood: (selectedMood: MoodOption) => void;
 };
 
+const srcImage = require('../assets/images/butterflies.png');
+
 export const MoodPicker: React.FC<MoodPickerProps> = ({
   handleSelectedMood,
 }) => {
   const [selectedMood, setSelectedMood] = useState<MoodOption>();
+  const [hasSelected, setHasSelected] = useState(false);
 
   // Fucntion to handlePress
   const handlePress = useCallback((el: MoodOption) => {
@@ -28,8 +31,22 @@ export const MoodPicker: React.FC<MoodPickerProps> = ({
     if (selectedMood) {
       handleSelectedMood(selectedMood);
       setSelectedMood(undefined);
+      setHasSelected(true);
     }
   }, [handleSelectedMood, selectedMood]);
+
+  if (hasSelected) {
+    return (
+      <View style={styles.container}>
+        <Image source={srcImage} style={styles.image} />
+        <Pressable
+          onPress={() => setHasSelected(false)}
+          style={styles.submitButton}>
+          <Text style={styles.submitButtonText}>Choose Another</Text>
+        </Pressable>
+      </View>
+    );
+  }
 
   return (
     <View style={styles.container}>
@@ -68,12 +85,14 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     margin: theme.space10,
     borderRadius: theme.space10,
+    backgroundColor: 'rgba(0,0,0,0.5)',
   },
   title: {
     textAlign: 'center',
     fontWeight: 'bold',
     fontSize: 20,
     paddingVertical: theme.space10,
+    color: theme.colorWhite,
   },
   itemContainer: {
     flexDirection: 'row',
@@ -113,5 +132,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 15,
     fontWeight: 'bold',
+  },
+  image: {
+    alignSelf: 'center',
   },
 });
