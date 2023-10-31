@@ -161,3 +161,6 @@ export const theme = {
 `Just as we did with color`
 
 **Note** Preferiblemente no uses fontWeight en tu app, usa directamente la fontFamily con el weight specific.
+
+# Animations
+- There's really two ways to animate your UI in React Native

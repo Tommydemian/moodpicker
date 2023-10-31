@@ -19,11 +19,13 @@ type MoodProviderType = {
 type MoodContextType = {
   moodList: MoodOptionWithTimestamp[];
   handleSelectMood: (selectedMood: MoodOption) => void;
+  handleDeleteMood: (moodToDelete: MoodOptionWithTimestamp) => void;
 };
 
 const MoodContext = createContext<MoodContextType>({
   moodList: [],
   handleSelectMood: () => {},
+  handleDeleteMood: () => {},
 });
 
 export const MoodProvider: React.FC<MoodProviderType> = ({ children }) => {
@@ -41,6 +43,20 @@ export const MoodProvider: React.FC<MoodProviderType> = ({ children }) => {
           { mood: selectedMood, timestamp: Date.now() },
         ];
 
+        setData(newMoodList);
+
+        return newMoodList;
+      });
+    },
+    [setData],
+  );
+
+  const handleDeleteMood = useCallback(
+    (mood: MoodOptionWithTimestamp) => {
+      setMoodList(current => {
+        const newMoodList = current.filter(
+          val => val.timestamp !== mood.timestamp,
+        );
         setData(newMoodList);
 
         return newMoodList;
