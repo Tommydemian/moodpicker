@@ -77,7 +77,8 @@ export const MoodProvider: React.FC<MoodProviderType> = ({ children }) => {
   }, [retrieveData]);
 
   return (
-    <MoodContext.Provider value={{ moodList, handleSelectMood }}>
+    <MoodContext.Provider
+      value={{ moodList, handleSelectMood, handleDeleteMood }}>
       {children}
     </MoodContext.Provider>
   );

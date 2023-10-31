@@ -164,3 +164,23 @@ export const theme = {
 
 # Animations
 - There's really two ways to animate your UI in React Native
+
+LayoutAnimation is enabled by default on iOS, but it's still experimental on Android. In order to enable LayoutAnimation on Android, open App.tsx and add the following:
+
+src/App.tsx
+```javascript
+import { Platform, UIManager } from 'react-native';
+
+if (Platform.OS === 'android') {
+  if (UIManager.setLayoutAnimationEnabledExperimental) {
+    UIManager.setLayoutAnimationEnabledExperimental(true);
+  }
+}
+```
+# Gestures
+- Need to learn a lot on this topic it seems.
+
+# App Icon
+IOS: 
+> To add an app icon to iOS, you need a 1024 x 1024px image.
+
